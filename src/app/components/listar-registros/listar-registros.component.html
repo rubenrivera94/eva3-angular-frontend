@@ -1,0 +1,41 @@
+<h2>Listado de Pacientes</h2>
+
+<table *ngIf="pacientes.length > 0; else noPacientes" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Foto</th> <!-- Nueva columna para la foto -->
+            <th>RUT</th>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Sexo</th>
+            <th>Enfermedad</th>
+            <th>Fecha de Ingreso</th>
+            <th>Revisado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let paciente of pacientes">
+            <td>
+                <!-- Mostrar la foto del paciente como miniatura redonda -->
+                <img *ngIf="paciente.fotoPersonal" [src]="getFotoUrl(paciente.fotoPersonal)" alt="Foto del paciente"
+                    class="foto-miniatura">
+            </td>
+            <td>{{ paciente.rut }}</td>
+            <td>{{ paciente.nombre }}</td>
+            <td>{{ paciente.edad }} años</td>
+            <td>{{ paciente.sexo }}</td>
+            <td>{{ paciente.enfermedad }}</td>
+            <td>{{ paciente.fechaIngreso | date:'dd/MM/yyyy' }}</td>
+            <td>{{ paciente.revisado ? 'Sí' : 'No' }}</td>
+            <td>
+                <button (click)="verDetalle(paciente._id)" class="btn btn-info btn-sm">Ver Detalles</button>
+                <button (click)="eliminarPaciente(paciente._id)" class="btn btn-danger btn-sm">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #noPacientes>
+    <p>No hay pacientes registrados.</p>
+</ng-template>

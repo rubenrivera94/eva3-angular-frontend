@@ -1,0 +1,65 @@
+<form #pacienteForm="ngForm" (ngSubmit)="onSubmit(pacienteForm)">
+
+    <div>
+        <label for="rut">RUT:</label>
+        <input type="text" id="rut" [(ngModel)]="paciente.rut" name="rut" required>
+        <div *ngIf="pacienteForm.submitted && !pacienteForm.controls['rut']?.valid">
+            <small>El RUT es obligatorio</small>
+        </div>
+    </div>
+<br>
+    <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" [(ngModel)]="paciente.nombre" name="nombre" required>
+        <div *ngIf="pacienteForm.submitted && !pacienteForm.controls['nombre']?.valid">
+            <small>El nombre es obligatorio</small>
+        </div>
+    </div>
+<br>
+    <div>
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" [(ngModel)]="paciente.edad" name="edad" required>
+        <div *ngIf="pacienteForm.submitted && !pacienteForm.controls['edad']?.valid">
+            <small>La edad es obligatoria</small>
+        </div>
+    </div>
+<br>
+    <div>
+        <label for="sexo">Sexo:</label>
+        <select id="sexo" [(ngModel)]="paciente.sexo" name="sexo" required>
+            <option value="" disabled selected>Selecciona el sexo</option>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+        </select>
+        <div *ngIf="pacienteForm.submitted && !pacienteForm.controls['sexo']?.valid">
+            <small>El sexo es obligatorio</small>
+        </div>
+    </div>
+<br>
+<!-- Subida de Foto Personal -->
+<div>
+    <label for="fotoPersonal">Foto Personal:</label>
+    <!-- Botón para seleccionar archivo manualmente -->
+    <input type="file" ng2FileSelect [uploader]="uploader" class="form-control" id="fotoPersonal" name="fotoPersonal" />
+</div>
+<br>
+    <div>
+        <label for="fechaIngreso">Fecha de Ingreso:</label>
+        <input type="date" id="fechaIngreso" [(ngModel)]="paciente.fechaIngreso" name="fechaIngreso" required>
+    </div>
+<br>
+    <div>
+        <label for="enfermedad">Enfermedad:</label>
+        <input type="text" id="enfermedad" [(ngModel)]="paciente.enfermedad" name="enfermedad" required>
+        <div *ngIf="pacienteForm.submitted && !pacienteForm.controls['enfermedad']?.valid">
+            <small>La enfermedad es obligatoria</small>
+        </div>
+    </div>
+<br>
+    <div>
+        <label for="revisado">¿Revisado?:</label>
+        <input type="checkbox" id="revisado" [(ngModel)]="paciente.revisado" name="revisado">
+    </div>
+<br>
+    <button type="submit">Guardar</button>
+</form>

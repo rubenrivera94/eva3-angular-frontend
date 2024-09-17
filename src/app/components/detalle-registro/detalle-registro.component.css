@@ -1,0 +1,10 @@
+.foto-miniatura {
+    width: 50px;
+    /* Ajusta el tamaño según tus necesidades */
+    height: 50px;
+    /* Ajusta el tamaño según tus necesidades */
+    border-radius: 50%;
+    /* Hacer la imagen redonda */
+    object-fit: cover;
+    /* Ajustar la imagen para que cubra el área sin distorsionarse */
+}

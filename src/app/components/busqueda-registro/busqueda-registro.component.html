@@ -1,0 +1,38 @@
+<div class="busqueda-container">
+  <h2>Búsqueda de Pacientes</h2>
+  <form (ngSubmit)="onBuscar()">
+    <div>
+      <label for="sexo">Sexo:</label>
+      <select id="sexo" [(ngModel)]="sexo" name="sexo">
+        <option value="">--Seleccionar--</option>
+        <option value="masculino">Masculino</option>
+        <option value="femenino">Femenino</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="fechaIngreso">Fecha de Ingreso:</label>
+      <input id="fechaIngreso" type="date" [(ngModel)]="fechaIngreso" name="fechaIngreso" />
+    </div>
+
+    <div>
+      <label for="enfermedad">Enfermedad:</label>
+      <input id="enfermedad" [(ngModel)]="enfermedad" name="enfermedad" />
+    </div>
+
+    <button type="submit">Buscar</button>
+  </form>
+
+  <!-- Lista de resultados -->
+  <div *ngIf="pacientesFiltrados.length > 0">
+    <h3>Resultados de la búsqueda:</h3>
+    <ul>
+      <li *ngFor="let paciente of pacientesFiltrados">
+        {{ paciente.nombre }} - {{ paciente.sexo }} - {{ paciente.fechaIngreso }} - {{ paciente.enfermedad }}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="pacientesFiltrados.length === 0">
+    <p>No se encontraron pacientes con los filtros aplicados.</p>
+  </div>
+</div>
